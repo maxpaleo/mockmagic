@@ -8,24 +8,25 @@ It's extremely simple and only requires an object schema to generate mock data.
 
 ```typescript
 const mockData = generate(schema); // Pass in any object schema to generate mock data
+/** 
+ * Returns mock data based on the schema
+ * { id: 1, name: 'John Doe', email: 'john.doe@example.com', phone: '123-456-7890' }
+ */
 ```
 
 ### When should I use this?
 Use MockMagic when you need to quickly generate realistic mock data in bulk. It's particularly effective for populating data for different types of data schemas or databases without having to manually assign data types.
 
 ### How It Works
-MockMagic prioritizes key-based data generation. 
+Compare to most other mock libraries, MockMagic prioritizes key-based data generation rather than data type-based generation. This means that virtually no configuration or setup is required to generate mock data, and you can use it on any object schema.
+
+You can generate mock data instantly on plain objects, objects of objects, Zod schemas, DrizzleOrm schemas, and more.
 
 It recognizes and generates data for common key names (e.g., id, first_name, phone_number, profile_image) in any naming convention—camelCase, snake_case, PascalCase, etc. 
 
-If a key isn't recognized, MockMagic defaults to generating data based on the data type specified in the schema. This approach ensures compatibility with various schema definitions, including:
+If a key isn't recognized, MockMagic defaults to generating data based on the data type specified in the schema. 
 
-- Zod schemas
-- DrizzleOrm schemas
-- TypeORM schemas
-- etc
-
-The library includes a test suite that covers: regular objects, [@Zod schemas](https://www.npmjs.com/package/zod), and [@DrizzleOrm schemas](hhttps://www.npmjs.com/package/drizzle-orm).
+The library includes a test suite that covers: regular objects, [@Zod schemas](https://www.npmjs.com/package/zod), and [@DrizzleOrm schemas](hhttps://www.npmjs.com/package/drizzle-orm) .
 
 ## Features
 - Generate mock data based on any object schema.
@@ -46,11 +47,11 @@ import { generate } from "mockmagic";
 ```
 
 ## Simple Usage
-All you need to do to generate mock data is to pass an object schema to the generate function:
+All you need to do to generate mock data is to pass an object schema to the generate function. 
 
 ```typescript
 
-const schema = { // Object schema
+const schema = { // Any object schema can be provided. (Plain object, object of objects, zod schemas, driizzle orm schemas, graphql schemas, etc)
   id: 'number',
   name: 'name',
   email: 'email',
@@ -62,6 +63,8 @@ const mockData = generate(schema); // Pass in any object schema to generate mock
  * { id: 1, name: 'John Doe', email: 'john.doe@example.com', phone: '123-456-7890' }
  */
 ```
+
+## Usage with other schemas
 
 #### Using a Zod schema:
 
@@ -75,7 +78,7 @@ const schema = z.object({
   phone: z.string().min(10).max(12),
 });
 
-const mockData = generate(schema);
+const mockData = generate(schema.shape);
 /** 
  * { id: 1, name: 'John Doe', email: 'john.doe@example.com', phone: '123-456-7890' }
  */
@@ -84,8 +87,6 @@ const mockData = generate(schema);
 #### Using a DrizzleOrm schema:
 
 ```typescript
-import { User } from 'drizzle-orm';
-
 const schema = pgTable("users", {
   id: serial("id").primaryKey().notNull(),
   first_name: text("first_name"),
@@ -103,6 +104,35 @@ const mockData = generate(schema);
 ## Options 
 MockMagic includes options to customize the data generation process.
 
+### Custom Key Map
+You can map custom keys to recognized data groups. This is useful if you have key names that aren't as direct such as `student_first_name` which is the same as `first_name`.
+
+For example: MagicMock recognizes these keys by default:
+
+- firstName : `first_name`, `firstName`, `FirstName`, `firstname`, ...
+- email : `email`, `emailAddress`, `email_address`, `emailaddress`, `user_email`, `userEmail`, `user_email`, ...
+- description : `description`, `Description`, `desc`, `descText`, ...
+- color : `color`, `colorCode`, `colour`, `colour_code`, `variant_color`, `product_color`, ...
+
+But `student_first_name` isn't recognized, so you can map it to the `firstName` data group.
+You can map as many keys as you want to a data group, which allows you to generate data for large data sets, or an entire database at once.
+
+
+```typescript
+const mockData = generate(schema, {
+   customKeyMap: {
+      firstName: ["student_first_name", "student_name"], // You can map student_first_name to firstName data group
+      email: ["student_email"],
+    },
+});
+/** 
+ * { id: 1, student_first_name: 'Frank', student_email: 'frank.smith@example.com'},
+ * { id: 2, student_first_name: 'Jane', student_email: 'jane.doe@example.com'}
+```
+
+
+
+
 ### Rounds 
 You can specify the number of rounds to generate data for:
 
@@ -115,48 +145,42 @@ const mockData = generate(schema, { rounds: 3 }); // Generates 3 sets of mock da
  */
 ```
 
-### Override By Data Group 
-You can override the default data generation for specific keys by mapping them to a data group. This is useful if you have key names that aren't recognized by the library.
+### Override By Group 
+You can override the default data generation for data groups to assign them custom values. This is useful for keys like `settings` or `metadata` which are often json objects in a specific format. 
 
-For example: MagicMock recognizes: 
-##### first_name as
-> `firstName`, `first_name`, `FirstName`, `firstname`, ...
-##### last_name as
-> `lastName`, `last_name`, `LastName`, `lastname`, ...
-##### email as
-> `email`, `emailAddress`, `email_address`, `emailaddress`, `user_email`, `userEmail`, `user_email`, ...
-##### description as
-> `description`, `Description`, `desc`, `descText`, ...
-##### color as
-> `color`, `colorCode`, `colour`, `colour_code`, `variant_color`, `product_color`, ...
+The values you assign to the data group, will be used for all recognized keys; for example: if you assign a value to `settings`, the value will be used for keys like `user_settings`, `app_settings`, etc.
 
-But `student_first_name` isn't recognized, so you can map it to the `firstName` data group:
+If you need to only override specific keys, you can use the `overrideByKey` option.
 
 ```typescript
 const mockData = generate(schema, {
-  overrideByDataGroup: {
-    firstName: "student_first_name" // Map student_first_name to firstName data group
-    description: "product_summary" // Map product_summary to description data group
-  }
+  overrideByGroup: {
+      settings: { notifications: { email: true } },
+      metadata: { device: "mobile" },
+    },
 });
-
 /** 
- * { id: 1, student_first_name: 'Frank', email: 'frank.smith@example.com'},
- * { id: 2, student_first_name: 'Jane', email: 'jane.doe@example.com'}
+ * { id: 1, student_first_name: 'Frank', email: 'frank.smith@example.com', settings: { notifications: { email: true } },
+  metadata: { device: "mobile" }},
+  { id: 2, student_first_name: 'Jane', email: 'jane.doe@example.com', settings: { notifications: { email: true } },
+  metadata: { device: "mobile" }}
 ```
 
 ### Override by Key 
-You can completely override the default generateion for specific keys. This is useful for enum type keys for example. 
-In this case, you can override the generation and assign the enum values directly. 
+You can completely override the default genereated data for specific keys. 
 
-You can use the `random()` function to randomly assign values from an array of values.
+This is useful for Enum values or keys like `settings` or `metadata` that that require specific values for your application. 
+
+You can add any key to the `overrideByKey` object to assign a specific value to that key.
+
+You can also use the `random()` helper function to randomly assign values from an array of values.
 
 ```typescript
-import { generate, random } from "mockmagic";
+import { generate, random } from "mockmagic"; // Import the random function
 
 const mockData = generate(schema, {
   overrideByKey: {
-    status: random(["active", "inactive", "suspended", "archived"]),
+    status: random(["active", "inactive", "suspended", "archived"]), // The status key will be assigned a random value from the array
     publishing_status: random(["draft", "pending_review", "scheduled"]),
   }
 });
