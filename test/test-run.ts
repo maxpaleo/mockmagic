@@ -16,8 +16,6 @@ import {
   ZodUserToOrganizationSchema,
 } from "./data/zod";
 
-const db = drizzle(...);
-
 /* --------------------------------- Drizzle -------------------------------- */
 const DRIZZLE_USER_SCHEMA = drizzleUser;
 const DRIZZLE_ORGANIZATION = drizzleOrganization;
@@ -165,5 +163,3 @@ const runGenerateSimpleDrizzle = () => {
   );
 };
 runGenerateSimpleDrizzle();
-
-
