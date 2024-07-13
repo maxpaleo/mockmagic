@@ -1,7 +1,9 @@
 # Ignore everything except for necessary files in npm package
-*
-!media/
-!dist/
-!dist/**/*.d.ts
-!README.md
-!package.json
+test/
+node_modules/
+.github/
+src/
+.npmignore
+.gitignore
+tsconfig.json
+README.html
