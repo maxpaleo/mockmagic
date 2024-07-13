@@ -42,7 +42,7 @@ npm i mockmagic
 
 ## Import 
 ```typescript
-import { MockMagic } from 'your-mockmagic-package-name';
+import { generate } from "mockmagic";
 ```
 
 ## Simple Usage
