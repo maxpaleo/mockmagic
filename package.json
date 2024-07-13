@@ -1,0 +1,30 @@
+{
+  "name": "mockmagic",
+  "version": "1.0.0",
+  "description": "pending",
+  "main": "dist/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc"
+  },
+  "keywords": [
+    "mockdata,mock,mocker,data,template data"
+  ],
+  "author": "Max Pauwels",
+  "license": "ISC",
+  "devDependencies": {
+    "drizzle-orm": "^0.32.0",
+    "typescript": "^5.5.3",
+    "uuid": "^10.0.0",
+    "zod": "^3.23.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^8.4.1"
+  }
+}

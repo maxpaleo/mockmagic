@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es6",
+        "noImplicitAny": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+    },
+    "include": [
+        "src/**/*",
+        "dist/**/*",
+        "media/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "processLogTest.ts"
+    ]
+}
