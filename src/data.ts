@@ -1,5 +1,4 @@
 import { faker, simpleFaker } from "@faker-js/faker";
-import { v4 as uuidv4 } from "uuid";
 import { random } from ".";
 
 export const mockSetings = {
@@ -100,7 +99,7 @@ export const possibleKeyMap = {
   },
   uuid: {
     keys: ["uuid"],
-    randomFunction: () => uuidv4(),
+    randomFunction: () => faker.string.uuid(),
   },
   id: {
     keys: ["id", "user_id", "organization_id"],

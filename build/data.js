@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.possibleKeyMap = exports.metadata = exports.mockSetings = void 0;
 const faker_1 = require("@faker-js/faker");
-const uuid_1 = require("uuid");
 const _1 = require(".");
 exports.mockSetings = {
     theme: "dark", // User's preferred theme, e.g., 'dark' or 'light'
@@ -102,7 +101,7 @@ exports.possibleKeyMap = {
     },
     uuid: {
         keys: ["uuid"],
-        randomFunction: () => (0, uuid_1.v4)(),
+        randomFunction: () => faker_1.faker.string.uuid(),
     },
     id: {
         keys: ["id", "user_id", "organization_id"],
