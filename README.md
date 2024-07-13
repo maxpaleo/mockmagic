@@ -228,7 +228,7 @@ const mockData = generate(schema, {
 const mockData = generate(schema, {
   rounds: 3, // Generate 3 sets of mock data
   customKeyMap: {
-    firstName: ["user_first_name", "password", "student_name"], // These keys will be regonized as firstName
+    firstName: ["user_first_name", "student_name"], // These keys will be regonized as firstName
     email: ["company_email", "user_email"], // These keys will be regonized as email
   },
   overrideByGroup: {
