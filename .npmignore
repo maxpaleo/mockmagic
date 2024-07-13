@@ -2,5 +2,6 @@
 *
 !media/
 !dist/
+!dist/**/*.d.ts
 !README.md
 !package.json
