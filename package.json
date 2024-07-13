@@ -25,6 +25,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@faker-js/faker": "^8.4.1"
+    "@faker-js/faker": "^8.4.1",
+    "uuid": "^10.0.0"
   }
 }
