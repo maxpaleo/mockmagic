@@ -37,12 +37,10 @@ The library includes a test suite that covers: regular objects, [@Zod schemas](h
 ## Installation
 Install MockMagic via npm:
 ```bash
-npm install your-mockmagic-package-name
+npm i mockmagic
 ```
 
 ## Import 
-To use MockMagic in your project, import it as follows:
-
 ```typescript
 import { MockMagic } from 'your-mockmagic-package-name';
 ```
@@ -105,7 +103,7 @@ const mockData = generate(schema);
 ## Options 
 MockMagic includes options to customize the data generation process.
 
-#### Rounds 
+### Rounds 
 You can specify the number of rounds to generate data for:
 
 ```typescript
@@ -117,7 +115,7 @@ const mockData = generate(schema, { rounds: 3 }); // Generates 3 sets of mock da
  */
 ```
 
-#### Override By Data Group 
+### Override By Data Group 
 You can override the default data generation for specific keys by mapping them to a data group. This is useful if you have key names that aren't recognized by the library.
 
 For example: MagicMock recognizes: 
@@ -147,7 +145,7 @@ const mockData = generate(schema, {
  * { id: 2, student_first_name: 'Jane', email: 'jane.doe@example.com'}
 ```
 
-#### Override by Key 
+### Override by Key 
 You can completely override the default generateion for specific keys. This is useful for enum type keys for example. 
 In this case, you can override the generation and assign the enum values directly. 
 
@@ -169,7 +167,7 @@ const mockData = generate(schema, {
  */
 ```
 
-#### Skip Keys
+### Skip Keys
 You can skip keys to return `null` values. This is usseful if you want to generate data for some keys but not others.
 
 ```typescript
@@ -182,7 +180,7 @@ const mockData = generate(schema, {
  */
 ```
 
-#### Custom Key
+### Custom Key
 You can assign a custom key to overwrite the default generate based on the object key. This is useful if you have an object with keys.
 
 ```typescript
@@ -191,7 +189,7 @@ const mockData = generate(schema, {
 });
 ```
 
-#### Data type key 
+### Data type key 
 You can assign a data type key to fallback to when the key isn't recognized. 
 
 ```typescript
