@@ -1,0 +1,6 @@
+# Ignore everything except for necessary files in npm package
+*
+!media/
+!dist/
+!README.md
+!package.json
