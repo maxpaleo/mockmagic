@@ -37,7 +37,7 @@ const applyOverrides = (overrides, keyMap) => {
  * @returns An object representing a row of mock data.
  */
 const generateTableData = (tableSchema, keyToFakerMap, options) => {
-    const { overrideByGroup = {}, overrideByKey = {}, skipKeys = [], } = options;
+    const { overrideByGroup = {}, overrideByKey = {}, skipKeys = [] } = options;
     const overrideMap = applyOverrides(overrideByGroup, data_1.possibleKeyMap);
     const generatedData = {};
     Object.keys(tableSchema).forEach((key) => {

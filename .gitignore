@@ -1,9 +1,6 @@
 # Node modules
 node_modules/
 
-# Dist files
-dist/
-
-
-
+# Src files
+src/
 
