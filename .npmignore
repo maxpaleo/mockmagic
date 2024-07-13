@@ -9,3 +9,4 @@ tsconfig.json
 README.html
 media/
 *.tgz
+*.html
