@@ -60,7 +60,7 @@ const applyOverrides = (
   keyMap: Record<KeyGroups, KeyMap>
 ) => {
   const overrideMap: Record<string, any> = {};
-  Object.entries(overrides).forEach(([key, value]) => {
+  Object.entries(overrides).forEach(([key, value]: [string, any]) => {
     if (keyMap[key as KeyGroups]) {
       keyMap[key as KeyGroups].keys.forEach((k) => {
         overrideMap[k] = value;
@@ -82,15 +82,11 @@ const generateTableData = (
   keyToFakerMap: Record<string, Function>,
   options: MockMagicOptions
 ) => {
-  const {
-    overrideByGroup = {},
-    overrideByKey = {},
-    skipKeys = [],
-  } = options;
+  const { overrideByGroup = {}, overrideByKey = {}, skipKeys = [] } = options;
   const overrideMap = applyOverrides(overrideByGroup, possibleKeyMap);
   const generatedData: Record<string, any> = {};
 
-  Object.keys(tableSchema).forEach((key) => {
+  Object.keys(tableSchema).forEach((key: string) => {
     if (skipKeys.includes(key)) {
       generatedData[key] = null; // Assign null to keys specified in skipKeys
     } else if (overrideByKey.hasOwnProperty(key)) {
