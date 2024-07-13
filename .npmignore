@@ -1,6 +1,6 @@
-# Ignore everything except for necessary files in npm package
-test/
+# Ignore directories and files that are not needed in the package
 node_modules/
+test/
 .github/
 src/
 .npmignore
