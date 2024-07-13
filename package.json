@@ -1,6 +1,6 @@
 {
   "name": "mockmagic",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "pending",
   "main": "dist/index.js",
   "directories": {
@@ -11,7 +11,11 @@
     "build": "tsc"
   },
   "keywords": [
-    "mockdata,mock,mocker,data,template data"
+    "mockdata",
+    "mock",
+    "mocker",
+    "data",
+    "template data"
   ],
   "author": "Max Pauwels",
   "license": "ISC",
