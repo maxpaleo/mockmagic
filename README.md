@@ -223,5 +223,5 @@ const mockData = generate(schema, {
 ### Dependencies
 - `faker-js/faker` to create realistic data sets.
 
-<img src="/media/example-drizzle.png">
-<img src="/media/generated-data.png">
+[<img src="/media/example-drizzle.png">](https://github.com/maxpaleo/mockmagic/raw/main/media/example-drizzle.png)
+[<img src="/media/generated-data.png">](https://github.com/maxpaleo/mockmagic/raw/main/media/generated-data.png)
