@@ -76,10 +76,10 @@ export declare const possibleKeyMap: {
     };
     readonly uuid: {
         readonly keys: readonly ["uuid"];
-        readonly randomFunction: () => void;
+        readonly randomFunction: () => string;
     };
     readonly id: {
-        readonly keys: readonly ["id"];
+        readonly keys: readonly ["id", "user_id", "organization_id"];
         readonly randomFunction: () => number;
     };
     readonly phoneNumber: {
@@ -111,7 +111,7 @@ export declare const possibleKeyMap: {
         readonly randomFunction: () => string;
     };
     readonly color: {
-        readonly keys: readonly ["color", "colour", "colorCode", "color_code", "colorcode", "colourCode", "colour_code"];
+        readonly keys: readonly ["color", "colour", "colorCode", "color_code", "colorcode", "colourCode", "colour_code", "product_color", "productColor", "product_colorCode", "product_color_code", "product_colorcode", "product_colourCode", "product_colour_code", "variant_color", "variantColor", "variant_colorCode", "variant_color_code", "variant_colorcode", "variant_colourCode", "variant_colour_code"];
         readonly randomFunction: () => string;
     };
     readonly jobTitle: {

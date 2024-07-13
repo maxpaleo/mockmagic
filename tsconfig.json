@@ -3,12 +3,13 @@
         "module": "commonjs",
         "target": "es6",
         "noImplicitAny": true,
-        "outDir": "./dist",
+        "outDir": "./build",
         "rootDir": "./src",
         "strict": true,
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "skipLibCheck": true,
+        "declaration": true,
         "lib": [
             "es2017",
             "dom"
@@ -16,7 +17,6 @@
     },
     "include": [
         "src/**/*",
-        "dist/**/*",
         "media/**/*"
     ],
     "exclude": [

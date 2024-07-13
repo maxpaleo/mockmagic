@@ -3,6 +3,7 @@ import {
   drizzleUser,
   drizzleOrganization,
   drizzleUsersToOrganizations,
+  userToOrganizationStatusEnum,
 } from "./data/drizzle-orm";
 import {
   objectUserSchema,
@@ -14,6 +15,8 @@ import {
   ZodOrganizationSchema,
   ZodUserToOrganizationSchema,
 } from "./data/zod";
+
+const db = drizzle(...);
 
 /* --------------------------------- Drizzle -------------------------------- */
 const DRIZZLE_USER_SCHEMA = drizzleUser;
@@ -114,7 +117,7 @@ const runGenerateSimpleZod = () => {
   );
   // console.log("Zod user to organization data:", zodUserToOrganizationData);
 };
-runGenerateSimpleZod();
+// runGenerateSimpleZod();
 
 /* -------------------------------------------------------------------------- */
 /*                       Run all Object data generation                       */
@@ -143,17 +146,24 @@ const runGenerateSimpleObject = () => {
 
 const runGenerateSimpleDrizzle = () => {
   const drizzleData = generateSimple(DRIZZLE_USER_SCHEMA);
-  // console.log("Drizzle data:", drizzleData);
+  console.log("Drizzle data:", drizzleData);
 
   const drizzleOrganizationData = generateSimple(DRIZZLE_ORGANIZATION);
-  // console.log("Drizzle organization data:", drizzleOrganizationData);
+  console.log("Drizzle organization data:", drizzleOrganizationData);
 
   const drizzleUserToOrganizationData = generateSimple(
-    DRIZZLE_USER_TO_ORGANIZATION
+    DRIZZLE_USER_TO_ORGANIZATION,
+    {
+      overrideByKey: {
+        status: random(userToOrganizationStatusEnum.enumValues),
+      },
+    }
   );
-  // // console.log(
-  //   "Drizzle user to organization data:",
-  //   drizzleUserToOrganizationData
-  // );
+  console.log(
+    "Drizzle user to organization data:",
+    JSON.stringify(drizzleUserToOrganizationData)
+  );
 };
-// runGenerateSimpleDrizzle();
+runGenerateSimpleDrizzle();
+
+

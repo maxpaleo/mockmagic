@@ -1,6 +1,6 @@
 {
   "name": "mockmagic",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "pending",
   "main": "dist/index.js",
   "scripts": {

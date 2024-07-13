@@ -123,4 +123,5 @@ export const drizzleUsersToOrganizations = pgTable("usersToOrganizations", {
     .notNull()
     .references(() => drizzleOrganization.id),
   type: text("type").notNull(),
+  status: userToOrganizationStatusEnum("status").default("pending"),
 });
