@@ -112,7 +112,7 @@ const generateTableData = (
           generatedData[key] = faker.date.past().toISOString();
           break;
         default:
-          console.error("Unsupported field type for key:", key);
+        // console.error("Unsupported field type for key:", key);
       }
     }
   });

@@ -1,4 +1,3 @@
-# Ignore directories and files that are not needed in the package
 node_modules/
 test/
 .github/
