@@ -1,6 +1,6 @@
 {
   "name": "mockmagic",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "Generate instant mock data from any object schema based on key names.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
@@ -15,7 +15,13 @@
     "mock",
     "mocker",
     "data",
-    "template data"
+    "template data", 
+    "drizzle-orm",
+    "drizzle",
+    "zod",
+    "object",
+    "schema",
+    "typescript"
   ],
   "author": "Max Pauwels",
   "license": "ISC",
