@@ -18,7 +18,7 @@ const mockData = generate(schema); // Pass in any object schema to generate mock
 Use MockMagic when you need to quickly generate realistic mock data in bulk. It's particularly effective for populating data for different types of data schemas or databases without having to manually assign data types.
 
 ### How It Works
-Compare to most other mock libraries, MockMagic prioritizes key-based data generation rather than data type-based generation. This means that virtually no configuration or setup is required to generate mock data, and you can use it on any object schema.
+Compared to most other mock libraries, MockMagic prioritizes key-based data generation rather than data type-based generation. This means that virtually no configuration or setup is required to generate mock data, and you can use it on any object schema.
 
 You can generate mock data instantly on plain objects, objects of objects, Zod schemas, DrizzleOrm schemas, and more.
 
