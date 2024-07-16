@@ -1,7 +1,7 @@
 {
   "name": "mockmagic",
-  "version": "1.0.21",
-  "description": "pending",
+  "version": "1.0.22",
+  "description": "Generate instant mock data from any object schema based on key names.",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "scripts": {
@@ -23,6 +23,10 @@
     "drizzle-orm": "^0.32.0",
     "typescript": "^5.5.3",
     "zod": "^3.23.8"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maxpaleo/mockmagic.git"
   },
   "publishConfig": {
     "access": "public"
