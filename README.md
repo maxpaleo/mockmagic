@@ -52,10 +52,10 @@ All you need to do to generate mock data is to pass an object schema to the gene
 ```typescript
 
 const schema = { // Any object schema can be provided. (Plain object, object of objects, zod schemas, driizzle orm schemas, graphql schemas, etc)
-  id: 'number',
-  name: 'name',
-  email: 'email',
-  phone: 'phone',
+  id: '',
+  name: '',
+  email: '',
+  phone: '',
 };
 
 const mockData = generate(schema); // Pass in any object schema to generate mock data
